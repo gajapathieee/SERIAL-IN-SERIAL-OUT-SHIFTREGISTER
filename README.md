@@ -1,67 +1,50 @@
 # SERIAL-IN-SERIAL-OUT-SHIFTREGISTER
 
-
 **AIM:**
-
-
 
 To implement  SISO Shift Register using verilog and validating their functionality using their functional tables
 
-
-
 **SOFTWARE REQUIRED:**
-
 
 Quartus prime
 
-
 **THEORY**
-
 
 **SISO shift Register**
 
-
-
 A Serial-In Serial-Out shift register is a sequential logic circuit that allows data to be shifted in and out one bit at a time in a serial manner. It consists of a cascade of flip-flops connected in series, forming a chain. The input data is applied to the first flip-flop in the chain, and as the clock pulses, the data propagates through the flip-flops, ultimately appearing at the output.
-
 
 The logic circuit provided below demonstrates a serial-in serial-out (SISO) shift register. It comprises four D flip-flops that are interconnected in a sequential manner. These flip-flops operate synchronously with one another, as they all receive the same clock signal.
 
-
-
 ![image](https://github.com/naavaneetha/SERIAL-IN-SERIAL-OUT-SHIFTREGISTER/assets/154305477/e81c4072-37f9-46c6-8145-566764b74c3a)
-
-
 
 Figure 01 4 Bit SISO Register
 
 The synchronous nature of the flip-flops ensures that the shifting of data occurs in a coordinated manner. When the clock signal rises, the input data is sampled and stored in the first flip-flop. On subsequent clock pulses, the stored data propagates through the flip-flops, moving from one flip-flop to the next.
 Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and an output (Q). The D input represents the data to be loaded into the flip-flop, while the CLK input is connected to the common clock signal. The output (Q) of each flip-flop is connected to the D input of the next flip-flop, forming a cascade.
 
-
-
 **Procedure**
 
-1.Initialize the shift register to a known state (e.g., all zeros).
+1.Declare a Verilog module named EXP11 with input ports clk, rst, sin, and an output port q.
 
-2.Input a bit serially into the shift register. 
+2.Declare input ports: clk for the clock signal, rst for the reset signal, and sin for the input signal. Also, declare the output port q as a 4-bit vector representing the state of flip-flops.
 
-3.Shift the contents of the register one position to the right (or left).
+3.Declare an internal register q as a 4-bit vector to store the state of the flip-flops.
 
-4.Output the shifted bit from the last stage of the register.
+4.Create an always block that triggers on the positive edge of both the clock (clk) and the reset signal (rst), containing the following steps:
 
-5.Repeat steps 2-4 for each bit you want to input and shift.
+5.If the reset signal is asserted (rst), assign q to 4'b0000 to reset all flip-flops to 0.
 
+6.If the reset signal is not asserted, assign the value of sin to the first flip-flop (q[0]) and shift the values of q to the right.
 
-
+7.End the module declaration.
 
 **PROGRAM**
 
-Developed by:Abinya.A
-
-RegisterNumber:212223040003
-
-
+```
+Program for flipflops and verify its truth table in quartus using Verilog programming.
+Developed by:gajapathi.j RegisterNumber:212222053002
+```
 ```
 module EXP10(clk, sin, q);
 input clk;
@@ -78,29 +61,12 @@ end
 endmodule
 ```
 
-
-
 **RTL LOGIC FOR SISO Shift Register**
-
-
-![de8](https://github.com/23002776/SERIAL-IN-SERIAL-OUT-SHIFTREGISTER/assets/145742657/7d41b8b4-f65e-4d17-8dbd-96dbaf7264dc)
-
-
+![exp 10 RTL](https://github.com/23003250/SERIAL-IN-SERIAL-OUT-SHIFTREGISTER/assets/139331462/562f33fa-edf8-4a07-a75d-89b135369c1a)
 
 **TIMING DIGRAMS FOR SISO Shift Register**
+![exp 10 timing diagram](https://github.com/23003250/SERIAL-IN-SERIAL-OUT-SHIFTREGISTER/assets/139331462/e22c50c1-06ca-4fc1-b3de-62e639be3c44)
 
+**RESULT**
 
-
-![de9](https://github.com/23002776/SERIAL-IN-SERIAL-OUT-SHIFTREGISTER/assets/145742657/7d33723b-4ce9-4e22-88bd-f021ea47c087)
-
-
-
-**RESULTS**
-
-
-
-SISO Shift Register using verilog and validating their functionality using their functional tables has successful execution of the program.
-
-
-
-
+Thus,SISO Shift Register using verilog and validating their functionality using their functional tables has successful execution of the program.
